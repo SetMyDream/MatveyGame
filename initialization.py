@@ -21,7 +21,7 @@ second_door = door.Door('Крокодилы')
 outdoor = room.Room([entrance], 'Улица', 3)
 hostinnaya = room.Room([entrance, first_door, second_door], 'Гостиная', 8)
 lava = room.Room([first_door], 'Лава', 6) #+++++++++++++++++++
-crocodile = room.Room([second_door], 'Кракодилы', 2, True)
+crocodile = room.Room([second_door], 'Крокодилы', 2, True)
 
 
 # соединяем команты и двери
@@ -30,8 +30,8 @@ first_door.setRooms(hostinnaya, lava)
 second_door.setRooms(hostinnaya, crocodile)
 
 #  создаём персонажа
-player1 = personage.Personage(outdoor, ['фонарь', 'отмычка', 'ручка', 'ключ от двери лава'])
-
+player1 = personage.Personage()
+player1.set_room(outdoor)
 
 
 history = ('    На мир снова нахлынула золотая лихорадка.\n '

@@ -15,17 +15,20 @@ class Door:
     def getRoom(self):
         return self.rooms[1]
 
-    # @later
+    # # @later
     def enter(self, pers):
-        if self.key == True:
+        if self.key:
             for i in pers.poket:
                 inin = i.lower().split()
                 if ('ключ' in inin):
                     if inin[3].lower() == self.name.lower():
-                        print('Вы перешли в комнату ', self.getRoom().name)
-                        room_ret = self.getRoom()
-                        self.rooms = [self.rooms[1], self.rooms[0]]
-                        return room_ret
+                        if pers.get_room().death == True:
+                            print('Вы умерли')
+                        else:
+                            print('Вы перешли в комнату ', self.getRoom().name)
+                            room_ret = self.getRoom()
+                            self.rooms = [self.rooms[1], self.rooms[0]]
+                            return room_ret
             print('Эту дверь не так легко открыть к ней нужен ключ')
             return self.rooms[0]
         else:
@@ -33,3 +36,25 @@ class Door:
             room_ret = self.getRoom()
             self.rooms = [self.rooms[1], self.rooms[0]]
             return room_ret
+
+    #     def enter(self, pers):
+    #         if self.key == True:
+    #             for i in pers.poket:
+    #                 inin = i.lower().split()
+    #                 if ('ключ' in inin):
+    #                     if inin[3].lower() == self.name.lower():
+    #                         if room.Room.death == True:
+    #                             print('Вы умерли')
+    #                     else:
+    #                         print('Вы перешли в комнату ', self.getRoom().name)
+    #                         room_ret = self.getRoom()
+    #                         self.rooms = [self.rooms[1], self.rooms[0]]
+    #                         return room_ret
+    #             print('Эту дверь не так легко открыть к ней нужен ключ')
+    #             return self.rooms[0]
+    #         else:
+    #             print('Вы перешли в комнату ', self.getRoom().name)
+    #             room_ret = self.getRoom()
+    #             self.rooms = [self.rooms[1], self.rooms[0]]
+    #             return room_ret
+
