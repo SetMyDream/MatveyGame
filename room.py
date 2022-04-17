@@ -1,5 +1,4 @@
 import door
-import personage
 
 
 class Room:

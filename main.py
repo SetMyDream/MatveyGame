@@ -23,6 +23,15 @@ def door_from_the_list(doors: list[door], command: str) -> list[door]:
     return doors2
 
 p1 = 0
+p2 = 0
+p3 = 0
+p4 = 0
+p5 = 0
+p6 = 0
+p7 = 0
+p8 = 0
+p9 = 0
+p10 = 0
 
 if __name__ == '__main__':
     name_of_player, pol_of_player = init.initialization()
@@ -39,8 +48,14 @@ if __name__ == '__main__':
     clearConsole()
     commands()
 
-    while True:
+    while (init.player1.alive):
         command = input("Ваш ход:").lower()
+        if ('добавить' in command):
+            init.player1.poketdobav(command)
+
+        if ('выкинуть' in command):
+            init.player1.poket_ybavit(command)
+
         if 'двер' in command:
             init.player1.get_room().printDoors()
 
@@ -54,6 +69,8 @@ if __name__ == '__main__':
                 init.player1.set_room(door2enter.enter(init.player1))
             else:
                 print("Прости, не понял куда идти")
+
+
 
         if 'выйти' in command:
             print('Прогрес сохранён')
@@ -71,6 +88,30 @@ if __name__ == '__main__':
                 personage.Personage.pasxalki += 1
                 print('Ты нашёл пасхалку')
 
+        if ('яслшлпплш' in command):
+             if p2 == 0:
+                 p2 += 1
+                 personage.Personage.pasxalki += 1
+                 print('Ты нашёл пасхалку')
+
+        if ('24.02.22' in command):
+             if p3 == 0:
+                 p3 += 1
+                 personage.Personage.pasxalki += 1
+                 print('Ты нашёл пасхалку')
+
+        if ('17.02.10' in command):
+             if p4 == 0:
+                 p4 += 1
+                 personage.Personage.pasxalki += 1
+                 print('Ты нашёл пасхалку')
+
+        if ('щдбнк' in command):
+             if p5 == 0:
+                 p5 += 1
+                 personage.Personage.pasxalki += 1
+                 print('Ты нашёл пасхалку')
+
         if ('пмн' in command):  # найденые мною масхалки
             if personage.Personage.pasxalki == 0:
                 print('Ты нашёл 0 пасхалок')
@@ -80,3 +121,5 @@ if __name__ == '__main__':
                 print('Ты нашёл ', personage.Personage.pasxalki, ' пасхалки')
             else:
                 print('Ты нашёл ', personage.Personage.pasxalki, ' пасхалок')  # максимум 20 пасхалок
+
+    print('Game over')
