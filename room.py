@@ -16,5 +16,3 @@ class Room:
         for door in self.doors:
             print(door.name + ' дверь.')
             # print('Надпись на двери: ', door.desc)
-
-    pass

@@ -1,3 +1,4 @@
+# import personage
 import room
 
 
@@ -15,21 +16,28 @@ class Door:
     def getRoom(self):
         return self.rooms[1]
 
-    # @later
+    def switch_rooms(self, text):
+        print(text)
+        self.rooms = [self.rooms[1], self.rooms[0]]
+
+    def transition_to_the_room(self, pers):
+        if self.rooms[1].death == True:
+            self.switch_rooms('Вы умерли') # to be continue
+            pers.kill()
+            return self.rooms[0]
+        else:
+            self.switch_rooms(f'Вы перешли в комнату {self.getRoom().name}')
+            return self.rooms[0]
+
+    # # @later
     def enter(self, pers):
-        if self.key == True:
+        if self.key:
             for i in pers.poket:
                 inin = i.lower().split()
                 if ('ключ' in inin):
                     if inin[3].lower() == self.name.lower():
-                        print('Вы перешли в комнату ', self.getRoom().name)
-                        room_ret = self.getRoom()
-                        self.rooms = [self.rooms[1], self.rooms[0]]
-                        return room_ret
+                        return self.transition_to_the_room(pers)
             print('Эту дверь не так легко открыть к ней нужен ключ')
             return self.rooms[0]
         else:
-            print('Вы перешли в комнату ', self.getRoom().name)
-            room_ret = self.getRoom()
-            self.rooms = [self.rooms[1], self.rooms[0]]
-            return room_ret
+            return self.transition_to_the_room(pers)
